@@ -9,4 +9,7 @@ header h1 {
     font-weight: bold;
 }
 
+#city {
+    border: 2px;
+}
 /* card color is #33475a */
