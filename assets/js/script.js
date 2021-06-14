@@ -6,7 +6,7 @@ var searchButton = document.querySelector("#search");
 
 //  API key: eb4e2dad1b3139204ac9acffff6d3724
 var getWeatherInfo = function (location) {
-    var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + location + ",us&units=imperial&APPID=eb4e2dad1b3139204ac9acffff6d3724";
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + location + ",us&units=imperial&APPID=eb4e2dad1b3139204ac9acffff6d3724";
 
     // make a request to the url
     fetch(apiUrl)
@@ -22,7 +22,7 @@ var getWeatherInfo = function (location) {
             }
         })
         .catch(function (error) {
-            alert("Unable to connect to weather website");
+            alert("Unable to connect to weather website ");
         });
 
 };
@@ -126,16 +126,15 @@ var displayForecast = function (forecastData) {
     var uv = document.querySelector("#uv");
     var uvIndex = forecastData.current.uvi;
 
-    var severity = Math.floor(uvIndex);
-    if (severity < 3) {
+    if (uvIndex < 3) {
         var mediaColor = "green";
-    } else if (severity >= 3 && severity < 6) {
+    } else if (uvIndex >= 3 && uvIndex < 6) {
         var mediaColor = "yellow";
-    } else if (severity >= 6 && severity < 8) {
+    } else if (uvIndex >= 6 && uvIndex < 8) {
         var mediaColor = "orange";
-    } else if (severity >= 8 && severity < 11) {
+    } else if (uvIndex >= 8 && uvIndex < 11) {
         var mediaColor = "red";
-    } else if (severity >= 11) {
+    } else if (uvIndex >= 11) {
         var mediaColor = "violet";
     }
 
