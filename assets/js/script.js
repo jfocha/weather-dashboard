@@ -2,6 +2,7 @@ var cityInputEl = document.querySelector("#city-input");
 var cityHistoryEl = document.querySelector("#search-history");
 var cityWeatherEl = document.querySelector("#city");
 var fiveDayEl = document.querySelector("#five-day");
+var searchButton = document.querySelector("#search");
 
 //  API key: eb4e2dad1b3139204ac9acffff6d3724
 var getWeatherInfo = function (location) {
@@ -71,7 +72,7 @@ function formatDate(timeStamp) {
     return time;
 }
 
-var weatherExtraInfo = function (info, check) {  
+var weatherExtraInfo = function (info, check) {
     // Get information from server
     if (check === false) {
         var temp = info.main.temp;
@@ -142,5 +143,24 @@ var displayForecast = function (forecastData) {
     }
 }
 
-
+// default weather
 getWeatherInfo("san francisco");
+
+var buttonClickHandler = function (event) {
+    var city = cityInputEl.value;
+    if (city) {
+        fiveDayEl.textContent = "";
+        getWeatherInfo(city);
+    }
+    // cityInputEl = event.target.getAttribute("data-language");
+    // if (language) {
+    //   getFeaturedRepos(language);
+
+    //   // clear old content
+    //   repoContainerEl.textContent = "";
+    // }
+    // console.log(cityInputEl)
+}
+searchButton.addEventListener("click", buttonClickHandler);
+
+//getWeatherInfo("atlanta");
