@@ -18,21 +18,47 @@
       <h1>Weather Dashboard</h1>
     </header>
     <main class="container">
-      <div class="row">
-        <div id="seacrh-column" class="col-sm-3">
-          <h2>Search for a City:</h2>
-          <form>
-            <label></label>
+      <div class="row pt-1">
+        <div id="search" class="col-sm-3">
+          <form class="border-bottom border-secondary">
+            <div class="form-group pb-3">
+              <label for="city-input"><h2>Search for a City:</h2></label>
+              <input
+                type="city"
+                class="form-control"
+                id="city-input"
+                placeholder="San Francisco"
+              />
+            </div>
+            <button type="button" class="btn btn-primary btn-block w-100 mb-3">
+                Search
+            </button>
           </form>
+          <div id="search-history" class="col-sm-3"></div>
         </div>
         <div class="col-sm-9">
-          <div class="row">
-            <div id="city" class="col-12"></div>
+          <div class="row py-2">
+            <div id="city" class="col-12 border border-dark"></div>
           </div>
-          <div class="row">
-            <div id="five-day" class="col-12">
+          <div id="five-day" class="row justify-content-between">
+            <div class="col-12">
               <h3>5-Day Forecast:</h3>
             </div>
+            <!-- <div class="col-2">
+              Basic card
+            </div>
+            <div class="col-2">
+              Basic card
+            </div>
+            <div class="col-2">
+              Basic card
+            </div>
+            <div class="col-2">
+              Basic card
+            </div>
+            <div class="col-2">
+              Basic card
+            </div> -->
           </div>
         </div>
       </div>

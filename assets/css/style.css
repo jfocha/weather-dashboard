@@ -9,7 +9,12 @@ header h1 {
     font-weight: bold;
 }
 
-#city {
-    border: 2px;
+h2 {
+    font-weight: bold;
+}
+
+.forecast-card {
+    background-color: #33475a;
+    color: #f1f1f1;
 }
 /* card color is #33475a */
