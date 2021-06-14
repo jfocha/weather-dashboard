@@ -17,4 +17,27 @@ h2 {
     background-color: #33475a;
     color: #f1f1f1;
 }
-/* card color is #33475a */
+
+.green {
+    background-color: green;
+    color: #f1f1f1;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.orange {
+    background-color: orange;
+    color: #f1f1f1;
+}
+
+.red {
+    background-color: red;
+    color: #f1f1f1;
+}
+
+.violet {
+    background-color: violet;
+    color: #f1f1f1;
+}

@@ -124,10 +124,23 @@ var displayWeather = function (weatherData, searchCity) {
 var displayForecast = function (forecastData) {
     // Append the UV Index to the current weather
     var uv = document.querySelector("#uv");
-
     var uvIndex = forecastData.current.uvi;
-    uv.innerHTML = "UV Index: " + uvIndex;
-    //cityWeatherEl.append(uvIndex);
+
+    var severity = Math.floor(uvIndex);
+    if (severity < 3) {
+        var mediaColor = "green";
+    } else if (severity >= 3 && severity < 6) {
+        var mediaColor = "yellow";
+    } else if (severity >= 6 && severity < 8) {
+        var mediaColor = "orange";
+    } else if (severity >= 8 && severity < 11) {
+        var mediaColor = "red";
+    } else if (severity >= 11) {
+        var mediaColor = "violet";
+    }
+
+    uv.innerHTML = "UV Index: <kbd class='" + mediaColor + "'>" + uvIndex + "</kbd>";
+
 
     // Make the forecast cards
     for (let i = 1; i < 6; i++) {
@@ -151,16 +164,23 @@ var buttonClickHandler = function (event) {
     if (city) {
         fiveDayEl.textContent = "";
         getWeatherInfo(city);
+        makeCityButtons();
+        cityInputEl.value = "";
     }
-    // cityInputEl = event.target.getAttribute("data-language");
-    // if (language) {
-    //   getFeaturedRepos(language);
+    var oldCity = event.target.getAttribute("data-city");
+    if (oldCity) {
+        fiveDayEl.textContent = "";
+        getWeatherInfo(oldCity);
+    }
+}
 
-    //   // clear old content
-    //   repoContainerEl.textContent = "";
-    // }
-    // console.log(cityInputEl)
+var makeCityButtons = function () {
+    var buttonHistory = document.createElement("button");
+    buttonHistory.innerHTML = formatName(cityInputEl.value);
+    buttonHistory.classList.add("btn", "btn-secondary", "btn-block", "w-100", "mb-3");
+    buttonHistory.setAttribute("data-city", cityInputEl.value);
+    cityHistoryEl.append(buttonHistory);
+
 }
 searchButton.addEventListener("click", buttonClickHandler);
 
-//getWeatherInfo("atlanta");
